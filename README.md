@@ -24,6 +24,7 @@ The website currently includes the following features:
 Access the backend at `/admin/*` using the following credentials:
 - Email: lukas@gmail.com
 - Password: heslo
+  
   *these are test-only datas*
 
 <img src="./MP-Pop-v7Diagram.drawio.png"/>
