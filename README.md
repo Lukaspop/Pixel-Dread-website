@@ -1,23 +1,29 @@
-# Web ke hře PixelDread
+# Website for PixelDread Game
 
-## Tato maturitní práce se zaměřuje na vývoj webové aplikace s proprietárním redakčním systémem pro mobilní hru PixelDread. Web zahrnuje následující klíčové funkce:
+*This project is expected to be completed in about one or two weeks.*
 
+## Overview
+This is a work-in-progress web application for the mobile game PixelDread, featuring a custom-built content management system. Please note that this version is unfinished and the frontend is still under development.
+
+The website currently includes the following features:
 - Blog
-- Seznam aktualizací
-- Přihlašovací systém
-- Rozhraní pro správu obsahu
-- Stránku s ochranou osobních údajů
-- FAQ (Často kladené otázky)
+- Update log
+- Login system
+- Content management interface
+- Privacy policy page
+- FAQ (Frequently Asked Questions)
 
-## Prostředky
-- Frontend: React, TypeScript
+## Technologies
+- Frontend: React, TypeScript (in development)
 - Backend: ASP.NET Core
 - Design: Figma
 - Deployment: Docker
-- Hosting: VPS
+- Hosting: VPS is ready on [https://pixeldread.com/](https://pixeldread.com/)
 
-
-
-
+## Admin Access
+Access the backend at `/admin/*` using the following credentials:
+- Email: lukas@gmail.com
+- Password: heslo
+  *these are test-only datas*
 
 <img src="./MP-Pop-v7Diagram.drawio.png"/>
