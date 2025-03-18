@@ -1,4 +1,4 @@
-# Website for Pixel Dread Game
+# Website for Pixel Dread Game (CMS)
 
 *This project is expected to be completed in about one or two weeks.*
 
