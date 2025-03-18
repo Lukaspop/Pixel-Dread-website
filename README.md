@@ -1,30 +1,29 @@
-# Website for Pixel Dread Game (CMS)
-
-*This project is expected to be completed in about one or two weeks.*
+# Pixel Dread Game - Content Management System (CMS)
+[https://pixeldread.com/](https://pixeldread.com/)
 
 ## Overview
-This is a work-in-progress web application for the mobile game Pixel Dread, featuring a custom-built content management system. Please note that this version is unfinished and the frontend is still under development.
+This dynamic web application is built for the mobile game Pixel Dread. It features a custom Content Management System (CMS) that powers dynamic content, moving beyond a static website. The CMS enables real-time content updates and management through an admin dasboard.
 
-The website currently includes the following features:
+The website currently includes:
 - Blog
 - Update log
-- Login system
+- User login system
 - Content management interface
 - Privacy policy page
+- Google Analytics & Cookies
 - FAQ (Frequently Asked Questions)
 
 ## Technologies
-- Frontend: React, TypeScript (in development)
-- Backend: ASP.NET Core
-- Design: Figma
-- Deployment: Docker
-- Hosting: VPS is ready on [https://pixeldread.com/](https://pixeldread.com/)
+- **Frontend:** React (React-router, React-Helmet), TypeScript
+- **Backend:** ASP.NET Core, Entity Framework Core
+- **Deployment:** Docker
+- **Hosting:** VPS available at [https://pixeldread.com/](https://pixeldread.com/)
 
 ## Admin Access
-Access the backend at `/admin/*` using the following credentials:
-- Email: lukas@gmail.com
-- Password: heslo
-  
-  *these are test-only datas*
+Access the backend via `/admin/*` using the following test credentials:
+- **Email:** test@tester.com
+- **Password:** secretpassword
+
+*Note: These are test credentials only. The database will be restructured in a future update, and these details are provided solely for testing purposes.*
 
 <img src="./MP-Pop-v7Diagram.drawio.png"/>
