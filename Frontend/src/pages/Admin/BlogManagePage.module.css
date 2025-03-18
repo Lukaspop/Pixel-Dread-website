@@ -1,0 +1,140 @@
+
+
+/* Title */
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-text-color);
+  
+}
+
+/* Controls container */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+/* Edit Tags button */
+.editTagButton {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.editTagButton:hover {
+  background-color: var(--button-background-hover);
+}
+
+/* Loading and no posts messages */
+.loading,
+.noPosts {
+  text-align: center;
+  color: var(--secondary-text-color);
+  margin-top: 2rem;
+}
+
+/* Posts list */
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Each post item */
+.postItem {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Post title */
+.postTitle {
+  font-size: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5rem;
+  color: var(--primary-text-color);
+}
+
+/* Container for post links */
+.postLinks {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Delete button */
+.deleteButton {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.viewButton {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.editButton {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.deleteButton:hover {
+  background-color: var(--button-background-hover);
+}
+.viewButton:hover {
+  background-color: var(--button-background-hover);
+}
+.editButton:hover {
+  background-color: var(--button-background-hover);
+}
+.postLink {
+  color: var(--button-text-color);
+  text-decoration: none;
+}
+/* Full screen overlay for ConfirmationModal */
+.fullScreenOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--modal-overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Mobile-first adjustments */
+@media (min-width: 768px) {
+
+  .title {
+    font-size: 2rem;
+  }
+  .postTitle {
+    font-size: 1.5rem;
+  }
+  .postLink {
+    font-size: 1.125rem;
+  }
+}

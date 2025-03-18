@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PixelDread.DTO;
 using PixelDread.Models;
@@ -49,7 +51,7 @@ namespace PixelDread.Controllers
 
             if (articles == null || !articles.Any())
             {
-                return NotFound($"No articles found for post with ID {postId}.");
+                return NoContent();
             }
 
             // Map each base Article to an anonymous object with a "Type" and the relevant fields
@@ -107,81 +109,10 @@ namespace PixelDread.Controllers
             return Ok(result);
         }
 
-        [HttpGet("first-articles/{postId}")]
-        public async Task<IActionResult> GetFirstArticles(int postId)
-        {
-            // Vezmeme z tabulky PostArticles jen záznamy pro daný postId,
-            // seřadíme podle Order a vezmeme první dva.
-            var postArticles = await _context.PostArticles
-                .Include(pa => pa.Article)
-                .Where(pa => pa.PostId == postId)
-                .OrderBy(pa => pa.Order)
-                .Take(2)
-                .ToListAsync();
-
-            // Pokud žádné články nejsou, vrátíme 404
-            if (!postArticles.Any())
-            {
-                return NotFound($"No articles found for post with ID {postId}.");
-            }
-
-            // Převedeme do anonymních objektů (nebo vlastního DTO), 
-            // aby se subtypové vlastnosti vrátily v JSON
-            var result = postArticles.Select<PostArticle, object>(pa =>
-            {
-                var a = pa.Article;
-                return a switch
-                {
-                    ArticleText text => new
-                    {
-                        pa.PostId,
-                        pa.ArticleId,
-                        Type = "text",
-                        text.Content,
-                        pa.Order
-                    },
-                    ArticleFAQ faq => new
-                    {
-                        pa.PostId,
-                        pa.ArticleId,
-                        Type = "faq",
-                        faq.Question,
-                        faq.Answer,
-                        pa.Order
-                    },
-                    ArticleLink link => new
-                    {
-                        pa.PostId,
-                        pa.ArticleId,
-                        Type = "link",
-                        link.Url,
-                        link.Placeholder,
-                        pa.Order
-                    },
-                    ArticleMedia media => new
-                    {
-                        pa.PostId,
-                        pa.ArticleId,
-                        Type = "media",
-                        media.Description,
-                        media.FileInformationsId,
-                        media.Alt,
-                        pa.Order
-                    },
-                    _ => new
-                    {
-                        pa.PostId,
-                        pa.ArticleId,
-                        Type = "unknown",
-                        pa.Order
-                    }
-                };
-            });
-
-            return Ok(result);
-        }
         // PUT: api/Article/{id}
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> UpdateArticle(int id, [FromForm] ArticleDto articleDto)
         {
             var article = await _context.Articles.FindAsync(id);
@@ -259,6 +190,8 @@ namespace PixelDread.Controllers
 
         // DELETE: api/Article/{id}
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> DeleteArticle(int id)
         {
             var article = await _context.Articles.FindAsync(id);

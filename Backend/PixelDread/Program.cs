@@ -60,7 +60,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("MyCors");
+app.UseCors("MyCors"); //bypass by docker
 
 app.UseHttpsRedirection();
 
@@ -69,6 +69,15 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
+
+    if (dbContext.Database.GetPendingMigrations().Any())
+    {
+        dbContext.Database.Migrate();
+    }
+}
 // Používáme vlastní mapování Identity API – ujistìte se, že MapCustomIdentityApi<TUser>() je správnì implementováno
 app.MapGroup("/api").MapCustomIdentityApi<IdentityUser>();
 

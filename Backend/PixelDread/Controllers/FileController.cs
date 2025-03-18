@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PixelDread.DTO;
@@ -24,6 +25,7 @@ namespace PixelDread.Controllers
         }
 
         [HttpPost("upload")]
+
         [Consumes("multipart/form-data")]  // Důležité pro Swagger generování
         public async Task<IActionResult> UploadFile([FromForm] FileInputModel fileModel)
         {

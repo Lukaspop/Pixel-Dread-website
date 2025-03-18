@@ -266,22 +266,6 @@
     ]
   },
   {
-    "ContainingType": "PixelDread.Controllers.ArticleController",
-    "Method": "GetFirstArticles",
-    "RelativePath": "api/Article/first-articles/{postId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "postId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensions\u002B\u003C\u003Ec__1\u00601[[Microsoft.AspNetCore.Identity.IdentityUser, Microsoft.Extensions.Identity.Stores, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
     "Method": "\u003CMapCustomIdentityApi\u003Eb__1_4",
     "RelativePath": "api/confirmEmail",
@@ -697,6 +681,27 @@
       {
         "Name": "OGData.FileInformationsId",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PixelDread.Controllers.PostController",
+    "Method": "UpdatePostName",
+    "RelativePath": "api/Post/{id}/name",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

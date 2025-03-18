@@ -1,51 +1,171 @@
-:root {
-    /* Definice barevných proměnných */
-    --color-primary: #333;
-    --color-secondary: #fff;
-    --color-hover: #ccc;
-    --color-button-bg: transparent;
-    --color-button-border: #fff;
-    --color-button-hover-bg: #fff;
-    --color-button-hover-text: #333;
-  }
-  
+.navbar {
+  background-color: var(--navbar-bg);
+  padding: 0 1.5em;
+  height: 48px; /* Small navbar height */
+  display: flex;
+  align-items: center;
+  font-family: var(--pixel-font);
+  font-size: 16px;
+  white-space: nowrap;
+  z-index: 1000;
+
+}
+
+.navbar__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navbar__brand {
+  font-size: 16px;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+}
+
+/* Hamburger menu for smallest screens */
+.hamburger {
+  width: 32px;   /* Smaller hamburger */
+  height: 32px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: block;
+}
+
+.hamburger span {
+  position: absolute;
+  height: 3px; /* Thinner spans */
+  width: 100%;
+  background: var(--navbar-text);
+  border-radius: 2px;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Equally spaced spans for 32px container */
+.hamburger span:nth-child(1) {
+  top: 7px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 15px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 23px;
+}
+
+.hamburger__open span:nth-child(1) {
+  top: 15px;
+  transform: rotate(45deg);
+}
+
+.hamburger__open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger__open span:nth-child(3) {
+  top: 15px;
+  transform: rotate(-45deg);
+}
+
+/* Mobile menu */
+.menu {
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  background-color: var(--navbar-bg);
+  position: absolute;
+  top: 40px; /* below the small navbar */
+  left: 0;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.menu__open {
+  display: flex;
+}
+
+.menu__link {
+  color: var(--navbar-text);
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background 0.3s;
+}
+.menu__link:hover {
+  background-color: var(--navbar-hover-bg);
+  border-radius: 4px;
+}
+.menu__link.last {
+  padding-bottom: 1rem;
+}
+
+.menu__link:hover {
+  background-color: var(--navbar-hover-bg);
+  border-radius: 4px;
+}
+
+/* For larger mobiles (min-width: 400px) update sizes */
+@media (min-width: 400px) {
   .navbar {
+    height: 64px; /* Larger navbar height */
+    font-size: 20px;
+  }
+  .navbar__brand {
+    font-size: 20px;
+  }
+  /* Update hamburger for larger devices */
+  .hamburger {
+    width: 48px;
+    height: 48px;
+  }
+  .hamburger span {
+    height: 5px; /* Thicker spans */
+  }
+  /* Adjust positions for thicker spans in a 48px container */
+  .hamburger span:nth-child(1) {
+    top: 10px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 22px;
+  }
+  .hamburger span:nth-child(3) {
+    top: 34px;
+  }
+  .hamburger__open span:nth-child(1) {
+    top: 22px;
+    transform: rotate(45deg);
+  }
+  .hamburger__open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger__open span:nth-child(3) {
+    top: 22px;
+    transform: rotate(-45deg);
+  }
+  .menu {
+    top: 48px; /* below the larger navbar */
+  }
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+  .menu {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-primary);
-    padding: 1rem;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background: none;
   }
-  
-  .navbar__links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  .menu__link {
+    padding: 10px 15px;
   }
-  
-  .navbar__link {
-    color: var(--color-secondary);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.2s ease;
-  }
-  
-  .navbar__link:hover {
-    color: var(--color-hover);
-  }
-  
-  .navbar__logout {
-    margin-left: 1rem;
-    background-color: var(--color-button-bg);
-    border: 1px solid var(--color-button-border);
-    color: var(--color-secondary);
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-  
-  .navbar__logout:hover {
-    background-color: var(--color-button-hover-bg);
-    color: var(--color-button-hover-text);
-  }
-  
+}
